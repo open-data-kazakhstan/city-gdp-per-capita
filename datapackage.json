@@ -1,0 +1,35 @@
+{
+    "profile": "tabular-data-package",
+    "resources": [
+        {
+            "path": "data\\result.csv",
+            "profile": "tabular-data-resource",
+            "name": "result",
+            "format": "csv",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "regions",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "Year 2022 \u20b8",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "Year 2022 $",
+                        "type": "number",
+                        "format": "default"
+                    }
+                ],
+                "missingValues": [
+                    ""
+                ]
+            }
+        }
+    ]
+}

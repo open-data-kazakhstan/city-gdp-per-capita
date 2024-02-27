@@ -1,0 +1,2 @@
+openpyxl~=3.1.2
+datapackage~=1.15.2
