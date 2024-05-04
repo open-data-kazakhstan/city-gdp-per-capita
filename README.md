@@ -16,7 +16,7 @@ python -m venv /path/to/localrepo
 Swicth to venv directory by using cd comand
 ```bash
 cd /path/to/localrepo
-Scripts/activate
+scripts/activate
 ```
 
 Install dependecies in venv by using pip

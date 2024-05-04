@@ -173,6 +173,41 @@ def merge_csv(tenge_file, usd_file, output_file):
 merge_csv('data/tenge_result.csv', 'data/usd_result.csv', 'data/result.csv')
 
 
+def change_words_in_csv(input_file, output_file):
+    word_replacements = {
+        "Республика Казахстан": "The Republic Kazakhstan",
+        "Область": "Region",
+        "Акмолинская": "Akmola Region",
+        "Актюбинская": "Aktobe Region",
+        "Алматинская": "Almaty Region",
+        "Атырауская": "Atyrau Region",
+        "Западно-Казахстанская": "West Kazakhstan Region",
+        "Жамбылская": "Zhambyl Region",
+        "Область Жетісу": "Zhetysu Region",
+        "Карагандинская": "Karaganda Region",
+        "Костанайская": "Kostanay Region",
+        "Кызылординская": "Kyzylorda Region",
+        "Мангистауская": "Mangystau Region",
+        "Павлодарская": "Pavlodar Region",
+        "Северо-Казахстанская": "North Kazakhstan Region",
+        "Туркестанская": "Turkestan Region",
+        "Область Ұлытау": "Ulytau Region Region",
+        "Восточно-Казахстанская": "East Kazakhstan Region",
+        "г.Астана": "Astana city",
+        "г.Алматы": "Almaty city",
+        "г.Шымкент": "Shymkent city"
+    }
+
+    with open(input_file, 'r', encoding='utf-8') as f_in, open(output_file, 'w', encoding='utf-8') as f_out:
+        for line in f_in:
+            columns = line.strip().split(',')
+            modified_columns = [word_replacements.get(col, col) for col in columns]
+            f_out.write(','.join(modified_columns) + '\n')
+
+
+change_words_in_csv('data/result.csv', 'data/result1.csv')
+
+
 def delete_files(file_paths):
     for file_path in file_paths:
         try:
@@ -183,11 +218,11 @@ def delete_files(file_paths):
             print(f"Error deleting file '{file_path}': {e}")
 
 
-files_to_delete = ['data/tenge.csv', 'data/tenge2.csv', 'data/tenge3.csv', 'data/usd0.csv', 'data/usd.csv', 'data/usd2.csv', 'data/usd3.csv','data/tenge_result.csv', 'data/usd_result.csv']
+files_to_delete = ['data/tenge.csv', 'data/tenge2.csv', 'data/tenge3.csv', 'data/usd0.csv', 'data/usd.csv', 'data/usd2.csv', 'data/usd3.csv','data/tenge_result.csv', 'data/usd_result.csv', 'data/result.csv']
 delete_files(files_to_delete)
 
 
 package = Package()
-package.infer(r"data\result.csv")
+package.infer(r"data\result1.csv")
 package.commit()
 package.save(r"datapackage.json")
